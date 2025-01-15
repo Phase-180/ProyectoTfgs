@@ -1,3 +1,3 @@
 export const environment = {
-  URL_API: 'http://drenpos:3000/api/',
+  URL_API: 'https://proyecto-tfgs.vercel.app/api/',
 };
