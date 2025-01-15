@@ -1,0 +1,29 @@
+<div class="flex flex-column mt-8 mb-5">
+    <div class="flex align-items-center justify-content-center">
+        <h3>Recuperar contraseña</h3>
+    </div>
+</div>
+<div class="card">
+    <p-messages [(value)]="messages" [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'"
+        [enableService]="true" />
+</div>
+<div class="flex flex-column">
+    <form [formGroup]="form">
+        <div class="flex align-items-center mb-2 justify-content-center">
+            <p-floatLabel>
+                <input pInputText id="email" formControlName="email" autocomplete="email" />
+                <label for="email">E-mail</label>
+            </p-floatLabel>
+        </div>
+        <div class="flex align-items-center mb-3 justify-content-center">
+            <small id="username-help">
+                Introduce tu email para recuperar la contraseña.
+            </small>
+
+        </div>
+        <div class="flex align-items-center justify-content-center">
+            <p-button label="Enviar" (onClick)="reset()" />
+        </div>
+    </form>
+</div>
+<hr />

@@ -1,0 +1,10 @@
+/* Estilos personalizados para el botón */
+.custom-button {
+    border-color: #ff5733;  /* Color del borde */
+    color: #ff5733;         /* Color del texto */
+  }
+  
+  .custom-button:hover {
+    background-color: #ff5733; /* Color de fondo cuando el mouse pasa sobre el botón */
+    color: white; /* Cambia el color del texto en hover */
+  }

@@ -1,0 +1,10 @@
+<div>
+    <h2>Datos personales</h2>
+    <p><strong>Nombre:</strong> {{this.usuario.name}} </p>
+    <p><strong>Apellidos:</strong> {{this.usuario.surname}} </p>
+    <p><strong>DNI:</strong> {{this.usuario.cif}}</p>
+    <p><strong>Fecha Nacimiento:</strong> {{this.usuario.bornDate | date: 'dd/MM/yyyy'}} </p>
+    <p><strong>Email:</strong> {{this.usuario.email}} </p>
+    <p *ngIf="usuario.address"> <strong>Dirección:</strong> {{this.usuario.address }}</p>
+    <p><strong>Teléfono:</strong> {{this.usuario.phone }}</p>
+</div>

@@ -1,0 +1,2 @@
+-- AddForeignKey
+ALTER TABLE `Reserva` ADD CONSTRAINT `Reserva_trfId_fkey` FOREIGN KEY (`trfId`) REFERENCES `Tarifa`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

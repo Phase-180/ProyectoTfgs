@@ -1,0 +1,53 @@
+<div class="flex flex-column mt-8 mb-5">
+  <div class="flex align-items-center justify-content-center">
+    <h3>Inicia sesión</h3>
+  </div>
+</div>
+<div class="flex flex-column">
+  <form [formGroup]="form">
+    <div class="flex align-items-center mb-5 justify-content-center">
+      <p-floatLabel>
+        <input
+          pInputText
+          id="email"
+          formControlName="email"
+          autocomplete="email"
+        />
+        <label for="email">E-mail</label>
+      </p-floatLabel>
+    </div>
+    <div class="flex align-items-center mb-2 justify-content-center">
+      <p-floatLabel>
+        <input
+          pPassword
+          type="password"
+          id="current-password"
+          formControlName="password"
+          autocomplete="current-password"
+          [feedback]="false"
+          [enterKeyHint]="true"
+          (keydown.enter)="onLogin()"
+        />
+        <label for="current-password">Contraseña</label>
+      </p-floatLabel>
+    </div>
+    <div class="flex align-items-center justify-content-around">
+      <p-button
+        label="Iniciar sesión"
+        (onClick)="onLogin()"
+        [disabled]="!form.valid"
+      />
+    </div>
+  </form>
+</div>
+
+<hr />
+<div class="flex flex-column">
+  <div class="flex align-items-center justify-content-around">
+    <p-button
+      label="¿Has olvidado la contraseña?"
+      routerLink="rauth/register"
+      [link]="true"
+    />
+  </div>
+</div>

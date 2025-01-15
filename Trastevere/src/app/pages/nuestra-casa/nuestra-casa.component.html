@@ -1,0 +1,65 @@
+<div class="flex flex-column mt-5">
+  <div class="flex justify-content-center">
+    <h2>Nuestra Casa</h2>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-6">
+    <div class="flex flex-column">
+      <div class="flex justify-content-center">
+        <!-- <img src="/assets/fotos/trt.jpeg" alt="" height="400px" width="300px" /> -->
+        <div class="card">
+          <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [showThumbnails]="false"
+            [showIndicators]="true" [fullScreen]="false" styleClass="custom-galleria">
+            <ng-template pTemplate="item" let-item>
+              <img [src]="item.itemImageSrc" style="width: 50%; display: block;" />
+            </ng-template>
+          </p-galleria>
+        </div>
+
+      </div>
+    </div>
+    <hr />
+  </div>
+
+  <div class="col-6">
+    <hr />
+    <div class="flex">
+      <div class="justify-content-center">
+        <p>
+          Casa adosada en San Juan de los Terreros para relajarte, desconectar y
+          disfrutar de unos días de playa, piscina y sus alrededores. Ubicada en
+          la urbanización Calas del Pinar, con zonas para niños y piscina
+          comunitaria. Consta de dos habitaciones, un sofá cama en salón, dos
+          baños completos, cocina totalmente equipada, terraza amplia y dos
+          patios exteriores. Dispone de aire acondicionado en salón, dormitorios
+          y mosquiteras en todas las ventanas de la casa. Ofrecemos a nuestros
+          huéspedes todas las comodidades como toallas de baño, sábanas de cama,
+          gel y champú, productos de limpieza, plancha de ropa, café e
+          infusiones. La entrada a la casa es muy flexible ya que contamos con
+          buzón donde recoger la llave y el huésped puede hacer el check-in y
+          check-out cuando desee dentro de las horas propuestas, si tiene
+          necesidad de entrada o salida fuera de esas horas puede proponerlo sin
+          problema y nos adaptaremos lo más posible a ellos.
+          <br />
+          <br />
+          <br />
+          San Juan de los Terreros está creciendo con el paso del tiempo,
+          podemos disfrutar de sus playas y calas con tanto encanto, sus bares.
+          Todos los domingos encuentras el mercadillo donde pasar la mañana
+          haciendo compras de todo tipo. En la urbanización Calas del Pinar
+          pueden disfrutar los niños en un lugar seguro, tiene piscina
+          comunitaria con llave propia para la entrada de los vecinos. Muy cerca
+          tenemos la Geoda de Pulpi, a tan solo 5 km de la casa. No te quedes
+          sin verla cuando vayas!. El snorkel es otra de las actividades que
+          hacer, además suelen hacer conciertos muchas noches de verano tanto en
+          el paseo marítimo como en el castillo o plaza de toros. Los
+          atardeceres, en el Mar de Águilas a tan solo 10 km playas con
+          bioluminiscencia, muchas cosas que hacer y que ver en tus días en San
+          Juan de los Terreros.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

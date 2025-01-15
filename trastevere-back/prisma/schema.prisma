@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  surname   String
+  email     String    @unique
+  password  String
+  address   String
+  phone     String
+  bornDate  DateTime
+  cif       String    @unique
+  createdAt DateTime  @default(now())
+  reservas  Reserva[]
+  role      Role      @default(USER)
+}
+
+model Reserva {
+  id           Int       @id @default(autoincrement())
+  fechaInicio  DateTime  @db.Date
+  fechaSalida  DateTime  @db.Date
+  precioFinal  Float
+  numHuespedes Int
+  deleted      Boolean?  @default(false)
+  devolucion      Boolean?  @default(false)
+  usrId        Int
+  createdAt    DateTime  @default(now())
+  baja         DateTime?
+
+  usuario User @relation(fields: [usrId], references: [id])
+}
+
+model Tarifa {
+  id          Int    @id @default(autoincrement())
+  iva         Float
+  descripcion String
+  price       Float
+
+  TarifaDays TarifaDays[]
+}
+
+model TarifaDays {
+  id        Int @id @default(autoincrement())
+  trfId     Int
+  dayInit   Int
+  dayEnd    Int
+  monthInit Int
+  monthEnd  Int
+
+  tarifa Tarifa @relation(fields: [trfId], references: [id])
+}
+
+enum Role {
+  USER
+  ADMIN
+}

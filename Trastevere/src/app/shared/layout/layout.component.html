@@ -1,0 +1,25 @@
+<div class="card flex justify-content-end">
+  <div *ngIf="isLogin()">
+    <p-button label="Iniciar Sesion" routerLink="auth/login" class="custom-button mr-3" />
+    <p-button label="Registrar Cuenta" routerLink="auth/register" />
+  </div>
+  <div *ngIf="!isLogin()">
+    <p-button label="{{ isName() }}" routerLink="home" class="custom-button mr-3" />
+    <p-button label="Salir" (onClick)="logout()" severity="danger" routerLink="nuestracasa" />
+  </div>
+</div>
+<div class="flex flex-column">
+  <div class="flex align-items-center justify-content-center flex-column">
+    <img src="/logos/logo.png" alt="" class="m-0 p-0" />
+  </div>
+  <div class="flex align-items-center justify-content-center">
+    <div class="card">
+      <p-tabMenu [model]="items" />
+    </div>
+  </div>
+</div>
+<div class="grid">
+  <div class="col-12">
+    <ng-content></ng-content>
+  </div>
+</div>

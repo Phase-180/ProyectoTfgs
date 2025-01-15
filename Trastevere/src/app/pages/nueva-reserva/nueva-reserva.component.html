@@ -1,0 +1,82 @@
+<div class="flex justify-content-start">
+  <h2>Nueva Reserva</h2>
+</div>
+
+@if (isAllData) {
+
+<div class="card grid">
+  <div class="col-12 md:col-6">
+    <p-calendar
+      (ngModelChange)="priceTotal()"
+      [(ngModel)]="reserva.dates"
+      [inline]="true"
+      selectionMode="range"
+      [minDate]="minDate"
+      [readonlyInput]="true"
+    >
+      <ng-template pTemplate="date" let-date>
+        <span
+          [ngStyle]="{
+            textDecoration: isReservedDate(date) ? 'line-through' : 'inherit'
+          }"
+        >
+          {{ date.day }}
+        </span>
+      </ng-template></p-calendar
+    >
+    <h4>Tarifas:</h4>
+    <ul>
+      <ng-template ngFor let-tarifa [ngForOf]="tarifas" let-i="index">
+        <br />
+        <li>{{ tarifa.descripcion }} = {{ tarifa.price }}€ / Noche</li>
+
+        @if( tarifa.descripcion == "Temporada Baja" ){
+        <br />
+        <span>1-Enero al 31-Marzo</span>
+        <br />
+        <span>1-Noviembre al 31-Diciembre</span>
+        <br />
+        } @if( tarifa.descripcion == "Temporada Alta" ){
+        <br />
+        <span>1-Abril al 31-Octubre</span>
+        <br />
+        }
+      </ng-template>
+    </ul>
+  </div>
+  <div class="col-12 md:col-6">
+    <div class="flex flex-column">
+      <label for="">Numero de huespedes</label>
+      <p-inputNumber
+        styleClass="w-full"
+        showButtons="true"
+        min="1"
+        [(ngModel)]="reserva.numHuespedes"
+        max="6"
+        (ngModelChange)="priceTotal()"
+      ></p-inputNumber>
+      <small class="text-yellow-200">El numero máximo de huespedes es 6</small>
+    </div>
+    <div></div>
+    <div class="flex flex-column justify-content-center mt-4 w-full">
+      @if (reserva.dates[0] && reserva.dates[1]) {
+      <b class="flex justify-content-center"
+        >{{ reserva.dates[0] | date }} - {{ reserva.dates[1] | date }}</b
+      >
+      } @if (reserva.dates[0] && reserva.dates[1] && reserva.priceTotal) {
+      <b class="flex justify-content-center"
+        >Total:{{ reserva.priceTotal | currency : "EUR" }}</b
+      >
+      }
+      <p-button
+        styleClass="w-full mt-4 mr-3"
+        label="Reservar"
+        (click)="reservar()"
+        [disabled]="
+          !reserva.dates[0] || !reserva.dates[1] || !reserva.numHuespedes
+        "
+      ></p-button>
+    </div>
+  </div>
+</div>
+}

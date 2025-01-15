@@ -1,0 +1,54 @@
+<div class="flex flex-column mt-5">
+  <div class="flex justify-content-center">
+    <h2>Disponibilidad del Alojamiento</h2>
+  </div>
+</div>
+<div class="grid">
+  <div class="col-6">
+    <div class="flex flex-column">
+      <div class="flex justify-content-center">
+        <p>
+          Nos complace que consideres nuestra casa para tu próxima estancia.
+          Para facilitar el proceso de reserva, te ofrecemos un calendario de
+          disponibilidad actualizado en tiempo real. Aquí podrás verificar qué
+          fechas están libres para planificar tu estancia con nosotros.
+          <br />
+          <br />
+          Proceso de Reserva Para realizar una reserva, es necesario estar
+          registrado en nuestra plataforma. Si aún no tienes una cuenta, te
+          invitamos a crear una para gestionar tus reservas de forma rápida y
+          segura. Una vez registrado, podrás dirigirte al apartado personal
+          donde podrás completar y confirmar tu reserva en las fechas
+          seleccionadas.
+          <br />
+          <br />
+          Consulta la disponibilidad: Revisa el calendario para ver qué fechas
+          están disponibles. Accede a tu apartado personal: Si deseas reservar,
+          inicia sesión en tu cuenta y dirígete a tu sección personal. Completa
+          tu reserva: Selecciona tus fechas preferidas y confirma la reserva
+          siguiendo los pasos de pago. Confirmación por correo: Recibirás un
+          correo electrónico confirmando tu reserva. Si tienes alguna pregunta o
+          necesitas asistencia con el proceso, no dudes en ponerte en contacto
+          con nosotros. ¡Esperamos darte la bienvenida pronto y hacer de tu
+          estancia una experiencia inolvidable!
+        </p>
+      </div>
+    </div>
+    <hr />
+  </div>
+
+  <div class="col-6">
+    <hr />
+    <div class="flex justify-content-center m-0">
+      <p-calendar [(ngModel)]="reserva.dates" [inline]="true" selectionMode="range" [minDate]="minDate"
+        [readonlyInput]="true">
+        <ng-template pTemplate="date" let-date>
+          <span [ngStyle]="{
+            textDecoration: isReservedDate(date) ? 'line-through' : 'inherit'
+          }">
+            {{ date.day }}
+          </span>
+        </ng-template></p-calendar>
+    </div>
+  </div>
+</div>

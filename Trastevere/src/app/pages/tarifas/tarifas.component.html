@@ -1,0 +1,27 @@
+<div class="flex justify-content-start">
+  <h2>Tarifas</h2>
+</div>
+
+<ul>
+  <ng-template ngFor let-tarifa [ngForOf]="tarifas" let-i="index">
+    <br />
+    <li>
+      {{ tarifa.descripcion }} =
+      <p-inputNumber
+        [(ngModel)]="tarifa.price"
+        suffix="€"
+        (ngModelChange)="onPriceChange(tarifa)"
+      ></p-inputNumber>
+      / Noche
+    </li>
+    <ul class="list-none">
+      @for (item of tarifa.TarifaDays; track $index) {
+      <li class="">
+        {{ item.dayInit | date : "yyyy-MM-dd" }} -
+        {{ item.dayEnd | date : "yyyy-MM-dd" }}
+      </li>
+      }
+    </ul>
+  </ng-template>
+</ul>
+<p-toast />

@@ -1,0 +1,39 @@
+<div class="grid">
+  <h2 class="col-12">Lista de Usuarios</h2>
+  <div class="col-12">
+    <!-- Mostrar mensaje si no hay users -->
+    <p *ngIf="!isLoading && users.length === 0">
+      No hay ususarios disponibles.
+    </p>
+
+    <!-- Mostrar la tabla solo si hay datos -->
+    <p-table
+      *ngIf="users.length > 0"
+      [value]="users"
+      dataKey="id"
+      editMode="row"
+      [tableStyle]="{ 'min-width': '50rem' }"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>Movil</th>
+          <th>Nif</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.surname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.cif }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<p-toast />

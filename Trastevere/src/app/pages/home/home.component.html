@@ -1,0 +1,45 @@
+<div class="grid">
+  <div class="col-4 justify-content-center">
+    <div class="card flex justify-content-center">
+      <p-menu [model]="items" styleClass="w-full md:w-15rem">
+        <ng-template pTemplate="start">
+          <span class="inline-flex align-items-center gap-1 px-2 py-2">
+            <span class="font-medium text-xl font-semibold"
+              >Casa<span class="text-primary">Trastévere</span></span
+            >
+          </span>
+        </ng-template>
+        <ng-template pTemplate="submenuheader" let-item>
+          <span class="text-primary font-bold">{{ item.label }}</span>
+        </ng-template>
+        <ng-template pTemplate="item" let-item>
+          <a
+            pRipple
+            class="flex align-items-center p-menuitem-link"
+            [routerLink]="item.routerLink"
+          >
+            <span [class]="item.icon"></span>
+            <span class="ml-2">{{ item.label }}</span>
+          </a>
+        </ng-template>
+        <ng-template pTemplate="end">
+          <button
+            pRipple
+            class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-3 text-color hover:surface-200 border-noround"
+          >
+            <p-avatar icon="pi pi-user" class="mr-2" shape="circle" />
+            <span class="inline-flex flex-column">
+              <span class="font-bold">{{
+                this.usuario.name + " " + this.usuario.surname
+              }}</span>
+              <span class="text-sm">{{ this.usuario.role }}</span>
+            </span>
+          </button>
+        </ng-template>
+      </p-menu>
+    </div>
+  </div>
+  <div class="col-8">
+    <router-outlet />
+  </div>
+</div>
