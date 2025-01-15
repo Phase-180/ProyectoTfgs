@@ -69,7 +69,7 @@ export class ListReservasComponent {
     this.reservaService.deleteReserva(reserva).subscribe({
       next: (data) => {
         reserva.devolucion = true;
-        this.show();
+        this.showDevolucion();
         this.cd.detectChanges();
       },
       error: () => {
@@ -103,9 +103,15 @@ export class ListReservasComponent {
   show() {
     this.messageService.add({
       severity: 'success',
-      summary: 'Success',
+      summary: 'Confirmada',
       detail: 'Reserva cancelada',
     });
+  }
+
+  showDevolucion() {
+        this.messageService.add({  severity: 'warn', summary: 'Devolución', detail: 'La devolución se realizara en breve.' });
+
+    
   }
 
   showNotDeleted() {

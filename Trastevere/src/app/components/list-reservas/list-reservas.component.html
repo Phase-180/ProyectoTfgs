@@ -55,17 +55,23 @@
         <p-tag *ngIf="reserva.devolucion && !reserva.deleted" severity="warning" value="Proceso Devolucion" />
       </td>
       <td>
-        <p-toast />
+        @if(!isAdmin){
         <p-button *ngIf="!reserva.devolucion && !reserva.deleted && !reserva.deleted && !reservaDateUntilNow(reserva)"
           icon="pi pi-times" severity="danger" rounded outlined="true" (onClick)="deleteReserva(reserva)" />
+        }
+
+        @if(isAdmin){
+        <p-button *ngIf="!reserva.devolucion && !reserva.deleted && !reserva.deleted && !reservaDateUntilNow(reserva)"
+          icon="pi pi-times" severity="danger" rounded outlined="true" (onClick)="deleteReservaAdmin(reserva)" />
+        }
       </td>
       @if(isAdmin){
       <td>
-        <p-toast />
-        <p-button *ngIf="!reserva.deleted && !reservaDateUntilNow(reserva)" icon="pi pi-check" severity="success"
-          rounded outlined="true" (onClick)="deleteReservaAdmin(reserva)" />
+        <p-button *ngIf="!reserva.deleted && reserva.devolucion && !reservaDateUntilNow(reserva)" icon="pi pi-check"
+          severity="success" rounded outlined="true" (onClick)="deleteReservaAdmin(reserva)" />
       </td>
       }
     </tr>
   </ng-template>
 </p-table>
+<p-toast [life]="10000" />
