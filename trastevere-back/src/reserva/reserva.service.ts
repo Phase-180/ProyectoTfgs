@@ -75,7 +75,8 @@ export class ReservaService {
     totalPrice = tarifasIds.reduce((acc, tarifa) => {
       const tarifaInt = tarifas.find((t) => t.id === tarifa);
       let price = tarifaInt.price * (numHuespedes * 0.1 + 1);
-      price += price * (tarifaInt.iva / 100 + 1);
+
+      price += price * (tarifaInt.iva / 100);
       acc += price;
       return acc;
     }, 0);
@@ -162,8 +163,6 @@ export class ReservaService {
       },
     });
 
-    
-
     if (!reserva) {
       throw {
         message: 'No se encontro la reserva',
@@ -190,8 +189,6 @@ export class ReservaService {
         // },
       },
     });
-
-    
 
     if (!reserva) {
       throw {
